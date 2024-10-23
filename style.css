@@ -10,10 +10,4 @@ h1 {
 p {
     color: red;
 }
-#header {
-    height:100vh;
-    width:100%;
-    background-image: url(1729523403061.jpg);
-    background-position: centre;
-    background-size: cover;
-}
+
