@@ -2,18 +2,13 @@ body {
     background-color: black;
     font-family: Arial, sans-serif;
 }
-
-h1 {
-    color: gold;
-}
-
-p {
-    color: gold;
+h1{
+    color: white;
 }
 #header{
     height: 100vh;
     width: 100%;
-    background-image: url(1729523403061.jpg);
+    background-image: url(1730128404659.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -47,5 +42,15 @@ nav ul li a:: after{
     bottom: -6px;
     background:#ff004f;
 }
-
-
+.headert{
+    color:#ff004f;
+    margin-top: 15%;
+    font-size: 30px;
+}
+.headert h1{
+    font-size: 60px;
+    margin-top: 20px;
+}
+.headert h1 span{
+    color: #7DF9FF;
+}
