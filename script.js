@@ -9,7 +9,7 @@ canvas.height = window.innerHeight;
 let theta = 0;
 const maxTheta = 12 * Math.PI;
 const increment = 0.005;
-const scaleFactor = 1; // Reduced scaleFactor (was 250)
+const scaleFactor = 100; // Reduced scaleFactor (was 250)
 
 function getColor(t) {
   const red = Math.sin(t * 0.5) * 127 + 128;
