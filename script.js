@@ -6,7 +6,8 @@ canvas.height = window.innerHeight;
 
 let theta = 0;
 const maxTheta = 12 * Math.PI;
-const increment = 0.01; // Adjust for smoothness
+const increment = 0.01;
+const scaleFactor = 150; // Adjust this value to control the size
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -15,12 +16,14 @@ function draw() {
   ctx.strokeStyle = 'blue';
 
   let r = Math.exp(Math.cos(theta)) - 2 * Math.cos(4 * theta) - Math.pow(Math.sin(theta / 12), 5);
+  r *= scaleFactor; // Apply the scaling factor
   let x = r * Math.cos(theta) + canvas.width / 2;
   let y = r * Math.sin(theta) + canvas.height / 2;
 
-  ctx.moveTo(canvas.width / 2, canvas.height / 2); // Start at the center
+  ctx.moveTo(canvas.width / 2, canvas.height / 2);
   for (let t = 0; t <= theta; t += increment) {
       r = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
+      r *= scaleFactor; // Apply the scaling factor
       x = r * Math.cos(t) + canvas.width / 2;
       y = r * Math.sin(t) + canvas.height / 2;
       ctx.lineTo(x, y);
@@ -32,7 +35,6 @@ function draw() {
   if (theta <= maxTheta) {
     requestAnimationFrame(draw);
   } else {
-    //Loop the animation.
     theta = 0;
     requestAnimationFrame(draw);
   }
