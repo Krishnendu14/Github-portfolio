@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 
 let theta = 0;
 const maxTheta = 12 * Math.PI;
-const increment = 0.01;
+const increment = 0.1;
 const scaleFactor = 500; // Adjust this value to control the size
 
 function draw() {
