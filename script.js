@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 let theta = 0;
 const maxTheta = 12 * Math.PI;
 const increment = 0.01;
-const scaleFactor = 150; // Adjust this value to control the size
+const scaleFactor = 500; // Adjust this value to control the size
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
