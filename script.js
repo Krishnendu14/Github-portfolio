@@ -9,13 +9,12 @@ canvas.height = window.innerHeight;
 let theta = 0;
 const maxTheta = 12 * Math.PI;
 const increment = 0.005;
-const scaleFactor = 490;
+const scaleFactor = 250;
 
 function getColor(t) {
-  // Create a color based on theta
-  const red = Math.sin(t * 0.5) * 127 + 128; // Red component
-  const green = Math.sin(t * 0.8 + 2) * 127 + 128; // Green component
-  const blue = Math.sin(t * 1.2 + 4) * 127 + 128; // Blue component
+  const red = Math.sin(t * 0.5) * 127 + 128;
+  const green = Math.sin(t * 0.8 + 2) * 127 + 128;
+  const blue = Math.sin(t * 1.2 + 4) * 127 + 128;
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
@@ -30,16 +29,25 @@ function draw() {
   let y = r * Math.sin(theta) + canvas.height / 2;
 
   ctx.moveTo(canvas.width / 2, canvas.height / 2);
-  for (let t = 0; t <= theta; t += increment) {
+
+  let previousX = canvas.width / 2;
+  let previousY = canvas.height / 2;
+
+  for (let t = increment; t <= theta; t += increment) { // Start from increment
     r = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
     r *= scaleFactor;
     x = r * Math.cos(t) + canvas.width / 2;
     y = r * Math.sin(t) + canvas.height / 2;
-    ctx.strokeStyle = getColor(t); // Set color based on theta
-    ctx.lineTo(x, y);
-  }
 
-  ctx.stroke();
+    ctx.strokeStyle = getColor(t);
+    ctx.beginPath(); // Start a new path for each segment with a color change
+    ctx.moveTo(previousX, previousY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    previousX = x;
+    previousY = y;
+  }
 
   theta += increment;
   if (theta <= maxTheta) {
