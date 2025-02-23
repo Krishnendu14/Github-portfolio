@@ -9,7 +9,7 @@ canvas.height = window.innerHeight;
 let theta = 0;
 const maxTheta = 12 * Math.PI;
 const increment = 0.005;
-const scaleFactor = 100;
+const scaleFactor = 100; // Reduced scaleFactor (was 250)
 
 function getColor(t) {
   const red = Math.sin(t * 0.5) * 127 + 128;
@@ -33,14 +33,14 @@ function draw() {
   let previousX = canvas.width / 2;
   let previousY = canvas.height / 2;
 
-  for (let t = increment; t <= theta; t += increment) { // Start from increment
+  for (let t = increment; t <= theta; t += increment) {
     r = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
     r *= scaleFactor;
     x = r * Math.cos(t) + canvas.width / 2;
     y = r * Math.sin(t) + canvas.height / 2;
 
     ctx.strokeStyle = getColor(t);
-    ctx.beginPath(); // Start a new path for each segment with a color change
+    ctx.beginPath();
     ctx.moveTo(previousX, previousY);
     ctx.lineTo(x, y);
     ctx.stroke();
